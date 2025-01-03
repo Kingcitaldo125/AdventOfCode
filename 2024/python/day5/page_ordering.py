@@ -14,7 +14,7 @@ def read_input(filepath="input.txt"):
 
 	return [page_orderings, page_rules]
 
-def total_valid_rules(ordering_map, page_rules):
+def valid_rules(ordering_map, page_rules):
 	valids = []
 	for rule_line in page_rules:
 		line = rule_line.split(',')
@@ -48,7 +48,7 @@ def main():
 		ordering_map[l].add(r)
 
 	total = 0
-	for rule in total_valid_rules(ordering_map, page_rules):
+	for rule in valid_rules(ordering_map, page_rules):
 		mid = get_middle_num(rule)
 		total += mid
 
