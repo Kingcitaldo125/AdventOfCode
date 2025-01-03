@@ -67,7 +67,7 @@ void search(const map_t& map, visited_t& visited, const coord_t& start_coord, co
     }
 }
 
-int calculate_asdf(const map_t& map)
+int calculate_fencing(const map_t& map)
 {
     visited_t g_visited;
     int res = 0;
@@ -128,7 +128,7 @@ int main()
         {'E','E','E','C'},
     }; // example 1
 
-    std::cout << calculate_asdf(map) << "\n";
+    std::cout << calculate_fencing(map) << "\n";
 
     return 0;
 }
