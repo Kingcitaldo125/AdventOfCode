@@ -18,8 +18,10 @@ jobs:
       - name: Install Deps
         run: sudo apt -y update && sudo apt -y install cmake build-essential
 
-      - name: Configure CMake
-        run: cd $(dirname `find . -name CMakeLists.txt`) && cmake -S . -B build
-
       - name: Build sources
-        run: cd $(dirname `find . -name CMakeLists.txt`) && cmake --build build/ --parallel 4
+        run: |
+          for dir in $(dirname `find . -name CMakeLists.txt`); do
+            pushd $PWD >/dev/null
+            cd $dir && cmake -S . -B build && cmake --build build/ --parallel 4
+            popd >/dev/null
+          done
