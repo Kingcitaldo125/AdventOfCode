@@ -182,7 +182,7 @@ int count_presses(const std::string& filename)
     int count = 0;
     for(const auto& press : presses)
     {
-        ++count;
+        count += press;
     }
     return count;
 }
