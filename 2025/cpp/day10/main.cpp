@@ -169,7 +169,7 @@ inline std::size_t determine_presses(Machine machine)
     return determine_presses_help(machine, 0, tcombos);
 }
 
-inline std::vector<std::size_t> count_presses(const std::string& filename)
+int count_presses(const std::string& filename)
 {
     std::vector<std::size_t> presses;
     const auto machines = read_machines(filename);
@@ -178,16 +178,17 @@ inline std::vector<std::size_t> count_presses(const std::string& filename)
         //std::cout << machine << "\n";
         presses.push_back(determine_presses(machine));
     }
-    return presses;
+
+    int count = 0;
+    for(const auto& press : presses)
+    {
+        ++count;
+    }
+    return count;
 }
 
 int main()
 {
-    const auto presses = count_presses("machines.txt");
-    for(const auto& press : presses)
-    {
-        std::cout << press << "\n";
-    }
-
+    std::cout << count_presses("machines.txt") << "\n";
     return 0;
 }
